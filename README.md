@@ -24,8 +24,33 @@ RapidAPI에서 제공하는 자동차 API를 활용하여 카탈로그 형식으
 * 메타데이터 및 SEO 최적화
 * 사용자 정의 필터, 콤보 상자 및 모달 요소 만들기
 
-## 🖥️ 개발 환경 프로젝트 실행 방법
-* 레포지토리 클론 : git clone https://github.com/YeoDaSeul4355/cars_showcase.git
-* 종속성 설치 : npm install
-* 환경 변수 세팅 : NEXT_PUBLIC_RAPID_API_KEY 입력 ( API-Ninjas 에서 API Key 발급 필요)
-* 프로젝트 시작 : npm run dev
+## ⚙️ 개발 환경 프로젝트 실행 방법
+
+<b>Step 1: </b><br>
+레포지토리 클론
+
+```c
+git clone https://github.com/YeoDaSeul4355/cars_showcase.git
+```
+
+<b>Step 2: </b><br>
+종속성 설치
+
+```c
+npm install
+```
+
+<b>Step 3: </b><br>
+환경 변수 세팅
+
+```c
+NEXT_PUBLIC_RAPID_API_KEY
+```
+( <a href="https://api-ninjas.com/api/cars">API-Ninjas</a> 에서 API Key 발급 필요)
+
+<b>Step 4: </b><br>
+프로젝트 시작
+
+```c
+npm run dev
+```
