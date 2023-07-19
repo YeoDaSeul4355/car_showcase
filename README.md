@@ -1,9 +1,12 @@
 # 🚗 자동차 API를 활용한 사이트 : Car Showcase
 
+![car_main](https://github.com/YeoDaSeul4355/car_showcase/assets/125419623/f04bdcf0-2009-40f7-9b0d-cd31c693e941)
 
 
 RapidAPI에서 제공하는 자동차 API를 활용하여 카탈로그 형식으로 제작한 사이트입니다.
 > View Demo : https://car-showcase-jjul.netlify.app/
+
+![car_sub](https://github.com/YeoDaSeul4355/car_showcase/assets/125419623/5ccee91d-88a0-466f-8a9a-692f40892deb)
 
 ## 👋 소개
 * 자동차 카탈로그: 이 프로젝트에는 사용자가 다양한 자동차 모델을 살펴볼 수 있는 포괄적인 자동차 카탈로그가 포함되어 있습니다. 카탈로그를 통해 사용자는 제조사, 모델, 연료 유형 및 연도를 포함한 다양한 기준에 따라 자동차를 필터링할 수 있습니다.
