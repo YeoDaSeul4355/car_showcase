@@ -8,7 +8,7 @@ RapidAPI에서 제공하는 자동차 API를 활용하여 카탈로그 형식으
 
 ![car_sub](https://github.com/YeoDaSeul4355/car_showcase/assets/125419623/5ccee91d-88a0-466f-8a9a-692f40892deb)
 
-**자동차 이미지 API key 만료로 인해 세부 이미지는 동일한 이미지로 대체하였습니다.**
+**자동차 이미지 API key 발급 문제로 인해 자동차 이미지는 동일한 이미지로 대체하였습니다.**
 
 ## 👋 소개
 * 자동차 카탈로그: 이 프로젝트에는 사용자가 다양한 자동차 모델을 살펴볼 수 있는 포괄적인 자동차 카탈로그가 포함되어 있습니다. 카탈로그를 통해 사용자는 제조사, 모델, 연료 유형 및 연도를 포함한 다양한 기준에 따라 자동차를 필터링할 수 있습니다.
@@ -21,6 +21,11 @@ RapidAPI에서 제공하는 자동차 API를 활용하여 카탈로그 형식으
 * TypeScript
 * TailwindCSS
 * PostCSS
+
+## 스터디한 내용(블로그 참조)
+<a href="https://duektmf34.tistory.com/194" target="_blank">1편</a>
+<a href="https://duektmf34.tistory.com/195" target="_blank">2편</a>
+
 
 ## ✍️ 구현 내역
 * Next.js 13 앱 라우터 및 서버 측 렌더링 사용
