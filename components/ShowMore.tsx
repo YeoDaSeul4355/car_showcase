@@ -2,17 +2,20 @@
 
 import { useRouter } from "next/navigation";
 
+import { CustomButton } from "@/components";
 import { ShowMoreProps } from "@/types";
 import { updateSearchParams } from "@/utils";
-import { CustomButton } from "@/components";
 
-const ShowMore = ({ pageNumber, isNext, setLimit }: ShowMoreProps) => {
+const ShowMore = ({ pageNumber, isNext }: ShowMoreProps) => {
   const router = useRouter();
 
   const handleNavigation = () => {
+    // 페이지 번호와 다음/이전 페이지 여부에 따라 새로운 limit 값을 계산하고 URL의 검색 매개변수를 업데이트한 후 새로운 경로로 이동한다.
     const newLimit = (pageNumber + 1) * 10;
+    const newPathname = updateSearchParams("limit", `${newLimit}`);
 
-    setLimit(newLimit);
+    // url 이동 후 스크롤 상단으로 가지않게 막아주는 옵션 추가
+    router.push(newPathname, { scroll: false });
   };
 
   return (
