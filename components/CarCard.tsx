@@ -4,10 +4,11 @@ import { useState } from "react";
 import Image from "next/image";
 
 import { CarProps } from "@/types";
-import CustomButton from "./CustomButton";
 import { calculateCarRent, generateCarImageUrl } from "@/utils";
+import CustomButton from "./CustomButton";
 import CarDetails from "./CarDetails";
 
+// 자동차 속성들
 interface CarCardProps {
   car: CarProps;
 }
@@ -17,13 +18,15 @@ const CarCard = ({ car }: CarCardProps) => {
 
   const [isOpen, setIsOpen] = useState(false);
 
+  // 자동차 렌탈비 계산하는 함수 이용
   const carRent = calculateCarRent(city_mpg, year);
 
   return (
     <div className="car-card group">
       <div className="car-card__content">
         <h2 className="car-card__content-title">
-          {make} {model}
+          {/* 제조사와 모델 */}
+          <span className="text-primary-blue">{make}</span> {model}
         </h2>
       </div>
 
@@ -31,6 +34,7 @@ const CarCard = ({ car }: CarCardProps) => {
         <span className="self-start text-[14px] leading-[17px] font-semibold">
           $
         </span>
+        {/* 렌탈비 */}
         {carRent}
         <span className="self-end text-[14px] leading-[17px] font-medium">
           /day
@@ -38,6 +42,7 @@ const CarCard = ({ car }: CarCardProps) => {
       </p>
 
       <div className="relative w-full h-40 my-3 object-contain">
+        {/* 차 이미지 */}
         <Image
           src={generateCarImageUrl(car)}
           alt="car model"
@@ -57,15 +62,18 @@ const CarCard = ({ car }: CarCardProps) => {
               alt="steering wheel"
             />
             <p className="text-[14px] leading-[17px]">
+              {/* 오토인지 수동인지? */}
               {transmission === "a" ? "Automatic" : "Manual"}
             </p>
           </div>
           <div className="car-card__icon">
             <Image src="/tire.svg" width={20} height={20} alt="seat" />
+            {/* 구동 방식(FWD, RWD, AWD, 4WD) */}
             <p className="car-card__icon-text">{drive.toUpperCase()}</p>
           </div>
           <div className="car-card__icon">
             <Image src="/gas.svg" width={20} height={20} alt="seat" />
+            {/* 연비? */}
             <p className="car-card__icon-text">{city_mpg} MPG</p>
           </div>
         </div>
