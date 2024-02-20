@@ -42,6 +42,7 @@ const SearchManufacturer: React.FC<SearchManufacturerProps> = ({
             />
           </Combobox.Button>
 
+          {/* 검색 input부분 query에 value를 저장해서 state관리 */}
           <Combobox.Input
             className="search-manufacturer__input"
             placeholder="Volkswagen"
@@ -56,10 +57,12 @@ const SearchManufacturer: React.FC<SearchManufacturerProps> = ({
             leaveTo="opacity-0"
             afterLeave={() => setQuery("")}
           >
+            {/* 제조사 옵션들 */}
             <Combobox.Options
               className="absolute mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm"
               static
             >
+              {/* 조건부 렌더링 */}
               {filteredManufacturers.length === 0 && query !== "" ? (
                 <Combobox.Option
                   value={query}
