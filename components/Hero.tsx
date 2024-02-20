@@ -5,7 +5,15 @@ import Image from "next/image";
 import { CustomButton } from ".";
 
 const Hero = () => {
-  const handleScroll = () => {};
+  // discover 구역으로 넘어가는 함수(스무스 효과)
+  const handleScroll = () => {
+    const nextSection = document.getElementById("discover");
+
+    if (nextSection) {
+      nextSection.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
     <div className="hero">
       <div className="flex-1 pt-36 padding-x">
