@@ -1,21 +1,16 @@
 "use client";
 
-import { useState, Fragment } from "react";
 import Image from "next/image";
+import React, { Fragment, useState } from "react";
 import { Combobox, Transition } from "@headlessui/react";
 
 import { manufacturers } from "@/constants";
 import { SearchManuFacturerProps } from "@/types";
 
-interface SearchManufacturerProps {
-  selected: string;
-  setSelected: (value: string) => void;
-}
-
-const SearchManufacturer: React.FC<SearchManufacturerProps> = ({
-  selected,
-  setSelected,
-}) => {
+const SearchManufacturer = ({
+  manufacturer,
+  setManuFacturer,
+}: SearchManuFacturerProps) => {
   const [query, setQuery] = useState("");
 
   const filteredManufacturers =
@@ -30,7 +25,7 @@ const SearchManufacturer: React.FC<SearchManufacturerProps> = ({
 
   return (
     <div className="search-manufacturer">
-      <Combobox value={selected} onChange={setSelected}>
+      <Combobox value={manufacturer} onChange={setManuFacturer}>
         <div className="relative w-full">
           <Combobox.Button className="absolute top-[14px]">
             <Image
@@ -42,12 +37,12 @@ const SearchManufacturer: React.FC<SearchManufacturerProps> = ({
             />
           </Combobox.Button>
 
-          {/* 검색 input부분 query에 value를 저장해서 state관리 */}
+          {/* 제조사 검색 input */}
           <Combobox.Input
             className="search-manufacturer__input"
-            placeholder="Volkswagen"
-            displayValue={(manufacturer: string) => manufacturer}
-            onChange={(e) => setQuery(e.target.value)}
+            displayValue={(item: string) => item}
+            onChange={(event) => setQuery(event.target.value)}
+            placeholder="Volkswagen..."
           />
 
           <Transition
@@ -62,7 +57,7 @@ const SearchManufacturer: React.FC<SearchManufacturerProps> = ({
               className="absolute mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm"
               static
             >
-              {/* 조건부 렌더링 */}
+              {/* 조건부 렌더링: 배열의 길이가 0인지 확인하고 query가 빈값이 아니면 */}
               {filteredManufacturers.length === 0 && query !== "" ? (
                 <Combobox.Option
                   value={query}
@@ -90,7 +85,7 @@ const SearchManufacturer: React.FC<SearchManufacturerProps> = ({
                         >
                           {item}
                         </span>
-
+                        =
                         {selected ? (
                           <span
                             className={`absolute inset-y-0 left-0 flex items-center pl-3 ${
