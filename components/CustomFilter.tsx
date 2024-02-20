@@ -5,14 +5,14 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { Listbox, Transition } from "@headlessui/react";
 
-import { CustomFilterProps } from "@/types";
 import { updateSearchParams } from "@/utils";
+import { CustomFilterProps } from "@/types";
 
 export default function CustomFilter({ title, options }: CustomFilterProps) {
   const router = useRouter();
-  const [selected, setSelected] = useState(options[0]); // State for storing the selected option
+  const [selected, setSelected] = useState(options[0]); // selected 상태를 초기값으로 첫 번째 옵션으로 설정
 
-  // update the URL search parameters and navigate to the new URL
+  //  함수: 선택된 옵션에 따라 URL의 검색 매개변수를 업데이트하고, 새 URL로 이동하는 함수
   const handleUpdateParams = (e: { title: string; value: string }) => {
     const newPathName = updateSearchParams(title, e.value.toLowerCase());
 
@@ -29,7 +29,6 @@ export default function CustomFilter({ title, options }: CustomFilterProps) {
         }}
       >
         <div className="relative w-fit z-10">
-          {/* Button for the listbox */}
           <Listbox.Button className="custom-filter__btn">
             <span className="block truncate">{selected.title}</span>
             <Image
@@ -40,15 +39,14 @@ export default function CustomFilter({ title, options }: CustomFilterProps) {
               alt="chevron_up-down"
             />
           </Listbox.Button>
-          {/* Transition for displaying the options */}
+
           <Transition
-            as={Fragment} // group multiple elements without introducing an additional DOM node i.e., <></>
+            as={Fragment}
             leave="transition ease-in duration-100"
             leaveFrom="opacity-100"
             leaveTo="opacity-0"
           >
             <Listbox.Options className="custom-filter__options">
-              {/* Map over the options and display them as listbox options */}
               {options.map((option) => (
                 <Listbox.Option
                   key={option.title}
