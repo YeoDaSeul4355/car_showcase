@@ -6,11 +6,6 @@ import { useRouter } from "next/navigation";
 
 import SearchManufacturer from "./SearchManufacturer";
 
-interface SearchBarProps {
-  setManufacturer: (manufacturer: string) => void;
-  setModel: (model: string) => void;
-}
-
 const SearchButton = ({ otherClasses }: { otherClasses: string }) => (
   <button type="submit" className={`-ml-3 z-10 ${otherClasses}`}>
     <Image
@@ -23,29 +18,53 @@ const SearchButton = ({ otherClasses }: { otherClasses: string }) => (
   </button>
 );
 
-const SearchBar: React.FC<SearchBarProps> = ({ setManufacturer, setModel }) => {
-  const [searchManufacturer, setSearchManufacturer] = useState("");
-  const [searchModel, setSearchModel] = useState("");
+const SearchBar = () => {
+  const [manufacturer, setManuFacturer] = useState("");
+  const [model, setModel] = useState("");
 
   const router = useRouter();
 
+  // 서치한 값을 필터링 해주는 함수
   const handleSearch = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    if (searchManufacturer.trim() === "" && searchModel.trim() === "") {
+    if (manufacturer.trim() === "" && model.trim() === "") {
       return alert("Please provide some input");
     }
 
-    setModel(searchModel);
-    setManufacturer(searchManufacturer);
+    // 매개변수로 받은 값을 파라미터로 전달해주는 함수에 각각 제조사와 모델을 넘겨줌
+    updateSearchParams(model.toLowerCase(), manufacturer.toLowerCase());
+  };
+
+  // 매개변수로 받은 값을 파라미터로 전달해주는 함수
+  const updateSearchParams = (model: string, manufacturer: string) => {
+    const searchParams = new URLSearchParams(window.location.search);
+
+    if (model) {
+      searchParams.set("model", model);
+    } else {
+      searchParams.delete("model");
+    }
+
+    if (manufacturer) {
+      searchParams.set("manufacturer", manufacturer);
+    } else {
+      searchParams.delete("manufacturer");
+    }
+
+    const newPathname = `${
+      window.location.pathname
+    }?${searchParams.toString()}`;
+
+    router.push(newPathname);
   };
 
   return (
     <form className="searchbar" onSubmit={handleSearch}>
       <div className="searchbar__item">
         <SearchManufacturer
-          selected={searchManufacturer}
-          setSelected={setSearchManufacturer}
+          manufacturer={manufacturer}
+          setManuFacturer={setManuFacturer}
         />
         <SearchButton otherClasses="sm:hidden" />
       </div>
@@ -60,9 +79,9 @@ const SearchBar: React.FC<SearchBarProps> = ({ setManufacturer, setModel }) => {
         <input
           type="text"
           name="model"
-          value={searchModel}
-          onChange={(e) => setSearchModel(e.target.value)}
-          placeholder="Tiguan"
+          value={model}
+          onChange={(e) => setModel(e.target.value)}
+          placeholder="Tiguan..."
           className="searchbar__input"
         />
         <SearchButton otherClasses="sm:hidden" />
