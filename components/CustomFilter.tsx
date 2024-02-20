@@ -12,7 +12,7 @@ export default function CustomFilter({ title, options }: CustomFilterProps) {
   const router = useRouter();
   const [selected, setSelected] = useState(options[0]); // selected 상태를 초기값으로 첫 번째 옵션으로 설정
 
-  //  함수: 선택된 옵션에 따라 URL의 검색 매개변수를 업데이트하고, 새 URL로 이동하는 함수
+  //  선택된 옵션에 따라 URL의 검색 매개변수를 업데이트하고, 새 URL로 이동하는 함수
   const handleUpdateParams = (e: { title: string; value: string }) => {
     const newPathName = updateSearchParams(title, e.value.toLowerCase());
 
@@ -24,8 +24,8 @@ export default function CustomFilter({ title, options }: CustomFilterProps) {
       <Listbox
         value={selected}
         onChange={(e) => {
-          setSelected(e); // Update the selected option in state
-          handleUpdateParams(e); // Update the URL search parameters and navigate to the new URL
+          setSelected(e); // 업데이트 된 상태 저장
+          handleUpdateParams(e); // 매개변수를 파라미터로 넘기는 함수
         }}
       >
         <div className="relative w-fit z-10">
