@@ -45,7 +45,7 @@ const SearchManufacturer: React.FC<SearchManufacturerProps> = ({
           <Combobox.Input
             className="search-manufacturer__input"
             placeholder="Volkswagen"
-            displayValue={(manufaacturer: string) => manufaacturer}
+            displayValue={(manufacturer: string) => manufacturer}
             onChange={(e) => setQuery(e.target.value)}
           />
 
